@@ -73,7 +73,7 @@ class _AuthPageState extends State<AuthPage> {
       obscureText: true,
       validator: (String value) {
         if (_passwordTextController.text != value) {
-          return 'Passwords do not match, please re-enter.';
+          return 'Passwords do not match.';
         }
       },
     );
@@ -99,9 +99,8 @@ class _AuthPageState extends State<AuthPage> {
     Map<String, dynamic> successInformation;
     successInformation = await authenticate(
         _formData['email'], _formData['password'], _authMode);
-
     if (successInformation['success']) {
-      Navigator.pushReplacementNamed(context, '/products');
+      // Navigator.pushReplacementNamed(context, '/');
     } else {
       showDialog(
         context: context,
@@ -180,9 +179,9 @@ class _AuthPageState extends State<AuthPage> {
                             ? CircularProgressIndicator()
                             : RaisedButton(
                                 textColor: Colors.white,
-                                child: Text(_authMode == AuthMode.Signup
-                                    ? 'SIGNUP'
-                                    : 'LOGIN'),
+                                child: Text(_authMode == AuthMode.Login
+                                    ? 'LOGIN'
+                                    : 'SIGNUP'),
                                 onPressed: () =>
                                     _submitForm(model.authenticate),
                               );

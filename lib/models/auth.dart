@@ -1,4 +1,4 @@
-enum AuthMode{
-  Login,
-  Signup
+enum AuthMode {
+  Signup,
+  Login
 }
